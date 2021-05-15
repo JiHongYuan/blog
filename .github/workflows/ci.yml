@@ -20,24 +20,18 @@ jobs:
       - name: Configuration environment
         env:
           HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
-          GIT_USER: ${{secrets.GIT_USER}}
-          GIT_EMAIL: ${{secrets.GIT_EMAIL}}
         run: |
           mkdir -p ~/.ssh/
           echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.name "$GIT_USER"
-          git config --global user.email "$GIT_EMAIL"
+          git config --global user.name "JiHongYuan"
+          git config --global user.email "1206429202@qq.com"
+
       - name: Install dependencies
         run: |
           npm i -g hexo-cli
           npm i
-      # - name: Indexing algolia
-      #   env:
-      #     HEXO_ALGOLIA_ADMIN_KEY: ${{secrets.HEXO_ALGOLIA_ADMIN_KEY}}
-      #   run: |
-      #     hexo algolia --indexing-key=$HEXO_ALGOLIA_ADMIN_KEY
 
       - name: Deploy hexo
         run: |
