@@ -27,12 +27,10 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name "JiHongYuan"
           git config --global user.email "1206429202@qq.com"
-
       - name: Install dependencies
         run: |
           npm i -g hexo-cli
           npm i
-
       - name: Deploy hexo
         run: |
-          hexo clean & hexo g & hexo d
+          hexo g -d
