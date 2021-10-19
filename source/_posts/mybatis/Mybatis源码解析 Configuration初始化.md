@@ -5,7 +5,7 @@ categories: Mybatis源码解析
 ---
 ## 前言
 本文分享Mybatis的Configuration初始化流程，[配置参考](https://mybatis.org/mybatis-3/zh/configuration.html)。
-重点分析XML资源文件解析和功能实现。
+重点分析XML资源文件解析和功能实现。  
 # 一、加载配置
 Mybatis加载配置文件分为两个步骤：
 
@@ -22,6 +22,7 @@ InputStream inputStream = inputStream = Resources.getResourceAsStream(resource);
 XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, null, null);
 return build(parser.parse());
 ```
+
 # 二、解析Config
 解析Configuration的由**XMLConfigBuilder**实现。
 ## 1. XMLConfigBuilder
@@ -438,6 +439,7 @@ private void mapperElement(XNode parent) throws Exception {
     }
 }
 ```
+
 到此处，整个MybatisConfig全部完成工作，下面开始解析Mapper。
 # 三、解析Mapper
 ## 1. XMLMapperBuilder
@@ -852,6 +854,7 @@ private void sqlElement(List<XNode> list, String requiredDatabaseId) {
     }
 }
 ```
+
 # 四、解析Statement
 [配置参考](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#select)，解析Statement是在Mapper中解析的，由于篇幅过长，并且Statement很重要所有单独开一个小结。
 **Statement**：select、insert、update、delete四大标签，对于执行器来说只有**Query**和**Update**方法。具体的配置就不在阐述了。
@@ -998,6 +1001,7 @@ public MappedStatement addMappedStatement(
     return statement;
 }
 ```
+
 # 五、总结
 照着官网走了一遍解析配置的流程，总体下来写的不是很满意，太粗糙了。  
 但是大部分常用的功能还是研究了，resultMap交叉解析这一块花了大功夫研究，遇到了很多问题，还碰见了Mybatis的BUG。  
