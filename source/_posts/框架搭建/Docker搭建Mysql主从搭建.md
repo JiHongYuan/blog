@@ -7,11 +7,13 @@ categories: 框架搭建
 # 前言  
 环境选择: `centos7`、`docker:20.10.21`、`mysql:8.0.31`。  
 一般来说数据库的瓶颈基本都是IO, 基本不会出现一台服务器部署多个Mysql服务，本次只作为Demo测试及简单使用，切勿在生产环境部署。  
+
 # 一、 镜像拉取
 在<a href="https://hub.docker.com/_/mysql/tags">Docker Hub</a>中选择合适的Mysql版本（8.0.31）。
 ```shell
 docker pull mysql:8.0.31
 ```
+
 # 二、 准备配置
 ### 1. 手动创建相关配置
 **准备以下文件夹**：
@@ -112,7 +114,6 @@ relay_log=edu-mysql-relay-bin
 略, 大部分和**1**相同，只是从容器中复制出`conf.d`文件夹，根据`mysql`版本可能存在目录位置不一样。
 
 ## 三、创建容器
-
 **1. master**
 ```shell
 docker run -d --name mysql-master \
@@ -135,6 +136,7 @@ docker run -d --name mysql-slave1 \
    -e MYSQL_ROOT_PASSWORD=21d4d869012c4e51acfd7a40387f5c99 \
    -d mysql:8.0.31
 ```
+
 **3. slave2**
 ```shell
 docker run -d --name mysql-slave2 \
@@ -146,6 +148,7 @@ docker run -d --name mysql-slave2 \
     -e MYSQL_ROOT_PASSWORD=9393f589049f4c89939ba167f8a05043 \
     -d mysql:8.0.31
 ```
+
 # 四、绑定主从关系
 ```shell
 change master to master_host='IP',master_user='root',master_password='',master_port=17717,master_log_file='replicas-mysql-bin.000001',master_log_pos=0;
@@ -154,6 +157,7 @@ start slave;
 # 设置只读
 set global read_only=1;
 ```
+
 # 五、总结
 总体下来搭建并不复杂，只需要几行配置命令即可，实际上还是花了大半天的时间。  
 总结下来：文档没有仔细阅读、docker并不熟悉导致的结果。
