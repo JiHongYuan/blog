@@ -133,7 +133,7 @@ docker run -d --name mysql-slave1 \
    -v /docker/mysql/slave1/data:/var/lib/mysql \
    -v /docker/mysql/slave1/logs:/var/log/mysql \
    -v /docker/mysql/slave1/conf:/etc/mysql \
-   -e MYSQL_ROOT_PASSWORD=21d4d869012c4e51acfd7a40387f5c99 \
+   -e MYSQL_ROOT_PASSWORD=123456 \
    -d mysql:8.0.31
 ```
 
@@ -145,7 +145,7 @@ docker run -d --name mysql-slave2 \
     -v /docker/mysql/slave2/data:/var/lib/mysql \
     -v /docker/mysql/slave2/logs:/var/log/mysql \
     -v /docker/mysql/slave2/conf:/etc/mysql \
-    -e MYSQL_ROOT_PASSWORD=9393f589049f4c89939ba167f8a05043 \
+    -e MYSQL_ROOT_PASSWORD=123456 \
     -d mysql:8.0.31
 ```  
    
