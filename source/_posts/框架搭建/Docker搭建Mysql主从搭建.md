@@ -114,7 +114,7 @@ relay_log=edu-mysql-relay-bin
 略, 大部分和**1**相同，只是从容器中复制出`conf.d`文件夹，根据`mysql`版本可能存在目录位置不一样。
 
 ## 三、创建容器
-**1. master**
+**1. master**  
 ```shell
 docker run -d --name mysql-master \
     --privileged=true \
@@ -125,7 +125,7 @@ docker run -d --name mysql-master \
     -e MYSQL_ROOT_PASSWORD=123456 \
     -d mysql:8.0.31
 ```
-**2. slave1**
+**2. slave1**  
 ```shell
 docker run -d --name mysql-slave1 \
    --privileged=true \
@@ -137,7 +137,7 @@ docker run -d --name mysql-slave1 \
    -d mysql:8.0.31
 ```
 
-**3. slave2**
+**3. slave2**  
 ```shell
 docker run -d --name mysql-slave2 \
     --privileged=true \
@@ -147,8 +147,8 @@ docker run -d --name mysql-slave2 \
     -v /docker/mysql/slave2/conf:/etc/mysql \
     -e MYSQL_ROOT_PASSWORD=9393f589049f4c89939ba167f8a05043 \
     -d mysql:8.0.31
-```
-
+```  
+   
 # 四、绑定主从关系
 ```shell
 change master to master_host='IP',master_user='root',master_password='',master_port=17717,master_log_file='replicas-mysql-bin.000001',master_log_pos=0;
