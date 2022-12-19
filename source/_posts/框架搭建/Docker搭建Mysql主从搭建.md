@@ -147,7 +147,8 @@ docker run -d --name mysql-slave2 \
     -v /docker/mysql/slave2/conf:/etc/mysql \
     -e MYSQL_ROOT_PASSWORD=123456 \
     -d mysql:8.0.31
-```  
+```
+
 # 四、绑定主从关系
 ```shell
 change master to master_host='IP',master_user='root',master_password='',master_port=17717,master_log_file='replicas-mysql-bin.000001',master_log_pos=0;
