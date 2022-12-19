@@ -15,7 +15,7 @@ docker pull mysql:8.0.31
 ```
 
 # 二、 准备配置
-### 1. 手动创建相关配置
+## 1. 手动创建相关配置
 **准备以下文件夹**：
 1. `/docker/mysql/master`
 2. `/docker/mysql/slave1`
@@ -110,11 +110,11 @@ log-bin=mysql-slave-bin
 relay_log=edu-mysql-relay-bin  
 ```
 
-### 2. 创建Mysql容器cp
+## 2. 创建Mysql容器cp
 略, 大部分和**1**相同，只是从容器中复制出`conf.d`文件夹，根据`mysql`版本可能存在目录位置不一样。
 
-## 三、创建容器
-**1. master**  
+# 三、创建容器
+## **1. master**  
 ```shell
 docker run -d --name mysql-master \
     --privileged=true \
@@ -125,7 +125,7 @@ docker run -d --name mysql-master \
     -e MYSQL_ROOT_PASSWORD=123456 \
     -d mysql:8.0.31
 ```
-**2. slave1**  
+## **2. slave1**  
 ```shell
 docker run -d --name mysql-slave1 \
    --privileged=true \
@@ -137,7 +137,7 @@ docker run -d --name mysql-slave1 \
    -d mysql:8.0.31
 ```
 
-**3. slave2**  
+## **3. slave2**  
 ```shell
 docker run -d --name mysql-slave2 \
     --privileged=true \
