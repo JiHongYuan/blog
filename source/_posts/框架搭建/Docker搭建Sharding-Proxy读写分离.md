@@ -89,5 +89,5 @@ docker run -d \
     -p 3306:3307 \
     apache/shardingsphere-proxy:latest
 ```
-# 五、总结
+# 四、总结
 看文档，看文档，看文档真的很重要。
